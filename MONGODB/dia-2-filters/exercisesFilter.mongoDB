@@ -1,0 +1,20 @@
+use('business')
+
+db.restaurants.find(
+    { borough: { $in: ["Queens", "Bronx","Staten Island"] }})
+    .count()
+
+use('business')
+db.restaurants.find({ cuisine: { $ne: "American" } })
+
+use('business')
+db.restaurants.countDocuments({ rating: { $gte: 8 } })
+
+use('business')
+db.restaurants.countDocuments({ rating: { $lt: 4 } })
+
+use('business')
+db.restaurants.countDocuments({ rating: { $nin: [4, 6, 7] } })
+
+use('business')
+db.restaurants.find({}, {"grades.score": 1})
