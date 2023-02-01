@@ -1,0 +1,17 @@
+use('class')
+db.bios.find({_id: 8})
+
+use('class')
+db.bios.find({ _id:8 }, { name: 1 })
+
+use('class')
+db.bios.find({ _id:8 }, { name: 1, birth: 1 })
+
+use('class')
+db.bios.find({"name.first": "John"})
+
+use('class')
+db.bios.find({}).limit(3)
+
+use('class')
+db.bios.find({}).skip(5)

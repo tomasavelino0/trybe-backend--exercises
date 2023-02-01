@@ -1,0 +1,13 @@
+use('class')
+db.books.countDocuments()
+
+use('class')
+db.books.find({ status: "PUBLISH" }).count()
+
+use('class')
+db.books.find({},
+ { _id: 0 ,title: 1, isbn: 1, pageCount: 1 }).limit(3)
+
+use('class')
+db.books.find({ status: "MEAP" },
+ { _id: 0, title: 1, authors: 1, status: 1 }).skip(5).limit(10)
