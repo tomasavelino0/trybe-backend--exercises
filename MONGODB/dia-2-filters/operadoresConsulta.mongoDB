@@ -124,7 +124,7 @@ db.movies.find({
         $size: 4
     },
     category: {
-        $in: ["adventure", "family"]
+        $in: ["adventure", "family",]
     },
     imdbRating: {
         $gt: 7
@@ -150,4 +150,4 @@ db.movies.find({
     $expr: {
         $gt: ["$grossWorldwide", "$budget"]
     }
-})
+});
