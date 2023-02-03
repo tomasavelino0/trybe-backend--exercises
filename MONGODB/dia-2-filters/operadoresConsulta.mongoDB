@@ -1,0 +1,153 @@
+use('business')
+db.movies.find({
+    category: {
+        $all: ["action", "adventure"]
+    }
+})
+
+use('business')
+db.movies.find({
+    category: {
+        $all: ["action", "sci-fi"]
+    },
+    imdbRating: {
+        $gt: 7
+    }
+})
+
+use('business')
+db.movies.find({
+    ratings: {
+        $elemMatch: {
+            $gt: 103
+        }
+    }
+}, {
+    title: 1,
+    ratings: 1
+})
+
+use('business')
+db.movies.find({
+    ratings: {
+        $elemMatch: {
+            $gte: 100,
+            $lte: 105,
+        }
+    }
+}, {
+    title: 1,
+    rating: 1
+})
+
+use('business')
+db.movies.find({
+    ratings: {
+        $elemMatch: {
+            $gte: 64,
+            $lte: 105
+        },
+        $mod: [9, 0]
+    }
+}, {
+    title: 1,
+    ratings: 1
+})
+
+use('business')
+db.movies.find({
+    category: {
+        $all: ["adventure"]
+    },
+    ratings: {
+        $elemMatch: {
+            $gt: 103
+        }
+    }
+}, {
+    _id: 0,
+    title: 1,
+    ratings: 1,
+    category: 1
+})
+
+use('business')
+db.movies.find({
+    category: {
+        $size: 2
+    }
+}, {
+    _id: 0,
+    title: 1
+})
+
+use('business')
+db.movies.find({
+    ratings: {
+        $size: 4
+    }
+}, {
+    _id: 0,
+    title: 1
+})
+
+use('business')
+db.movies.find({
+    budget: {
+        $mod: [5, 0]
+    },
+    category: {
+        $size: 2
+    }
+})
+
+use('business')
+db.movies.find({
+    $or: [{
+        category: "sci-fi"
+    }, {
+        ratings: {
+            $elemMatch: {
+                $gt: 199
+            }
+        }
+    }]
+}, {
+    title: 1,
+    category: 1,
+    ratings: 1
+})
+
+use('business')
+db.movies.find({
+    ratings: {
+        $size: 4
+    },
+    category: {
+        $in: ["adventure", "family"]
+    },
+    imdbRating: {
+        $gt: 7
+    }
+})
+
+use('business')
+db.movies.find({
+    description: {
+        $regex: /^(The)/
+    }
+})
+
+use('business')
+db.movies.find({
+    description: {
+        $regex: /(humanity.)$/g
+    }
+})
+
+use('business')
+db.movies.find({
+    $expr: {
+        $gt: ["$grossWorldwide", "$budget"]
+    }
+})
