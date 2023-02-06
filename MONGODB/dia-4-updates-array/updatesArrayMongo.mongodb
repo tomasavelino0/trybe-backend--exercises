@@ -1,0 +1,86 @@
+use('cinema')
+db.movies.updateOne(
+    { title: "Batman" },
+    { $push: { category: "superhero"} }
+)
+
+use('cinema')
+db.movies.updateOne(
+    { title: "Batman" },
+    { $push: { category: { $each: ["villain", "comic-based", ] } }}
+)
+
+use('cinema')
+db.movies.updateOne(
+    { title: "Batman" },
+    { $pull: { category: "action" } }
+)
+
+use('cinema')
+db.movies.updateOne(
+    { title: "Batman" },
+    { $pop: { category: -1 } }
+)
+
+use('cinema')
+db.movies.updateOne(
+    { title: "Batman" },
+    { $pop: { category: 1 } }
+)
+
+use('cinema')
+db.movies.updateOne(
+    { title: "Batman" },
+    { $addToSet: { category: "action"} }
+)
+
+use('cinema')
+db.movies.updateMany(
+    { title: { $in: ["Batman", "Home Alone"] } },
+    { $addToSet: { category: "90's" } }
+)
+
+use('cinema')
+db.movies.updateOne(
+  { title: "Home Alone" },
+  {
+    $push: {
+      cast: {
+        $each: [
+          {
+            "actor": "Macaulay Culkin",
+            "character": "Kevin",
+          },
+          {
+            "actor": "Joe Pesci",
+            "character": "Harry",
+          },
+          {
+            "actor": "Daniel Stern",
+          },
+        ],
+      },
+    },
+  },
+,)
+
+use('cinema')
+db.movies.updateMany(
+    { title: "Home Alone"},
+    { $push: { cast: { actor: "Daniel Stern", character: "Marv" }}}
+)
+
+use('cinema')
+db.movies.updateOne(
+  {
+    title: "Home Alone",
+    "cast.actor": "Daniel Stern",
+  },
+  {
+    $set: { "cast.$.character": "Marv" },
+  },
+);
+
+
+use('cinema')
+db.movies.find()
